@@ -54,11 +54,11 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
   return (
     <>
       {person && (
-        <div className="h-full relative shadow-lg ">
+        <div className=" flex flex-col h-full w-full relative shadow-lg ">
           <img
             src={person?.banner}
             alt=""
-            className="h-full w-full rounded-lg"
+            className="w-full rounded-lg h-full"
           />
 
           <div className="absolute bottom-0 h-[40vh] bg-opacity-90 bg-white w-full overflow-y-auto shadow">
