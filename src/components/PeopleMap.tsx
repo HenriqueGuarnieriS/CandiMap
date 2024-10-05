@@ -65,11 +65,11 @@ const PeopleMap: React.FC<PeopleMapProps> = ({ onMarkerClick }) => {
   };
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full z-49">
       <MapContainer
         center={defaultPosition}
         zoom={5}
-        className=" h-full w-full p-4 rounded-lg"
+        className=" h-full w-full p-4 rounded-lg  z-40"
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -94,7 +94,7 @@ const PeopleMap: React.FC<PeopleMapProps> = ({ onMarkerClick }) => {
               }}
             >
               <Popup>
-                <div className="text-center flex flex-col  items-center">
+                <div className="text-center flex flex-col  items-center ">
                   <img
                     src={person.image}
                     alt={person.name}
