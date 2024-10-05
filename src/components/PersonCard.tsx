@@ -98,7 +98,7 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
                   <h2 className="font-bold text-3xl">Rankings</h2>
                   <span className="font-bold text-lg">Doadores</span>
                   <div className="flex flex-col  ">
-                    {candidateContas?.rankingDoadores.map((doador, index) => (
+                    {candidateContas?.rankingDoadores.map((doador) => (
                       <div className="flex flex-col">
                         <span className="">{doador.nome}</span>
                         <span className="text-sm">{doador.cpfCnpj}</span>
