@@ -55,7 +55,7 @@ const App: React.FC = () => {
 
   const renderMobile = () => {
     return (
-      <div className="flex flex-col w-[100vw] h-screen p-4 gap-4 bg-neutral-800">
+      <div className="flex flex-col w-[100vw] min-h-screen p-4 gap-4 bg-neutral-800">
         {/* Painel à direita com busca e detalhes */}
         <div className="flex flex-col gap-2 w-full">
           <div className=" shadow bg-white rounded-lg p-4 relative">
@@ -84,7 +84,7 @@ const App: React.FC = () => {
             )}
           </div>
           {/* Mapa */}
-          <div className="w-full h-[90vh]">
+          <div className="w-full h-[60vh]">
             <PeopleMap onMarkerClick={handleMarkerClick} />
           </div>
 
@@ -155,15 +155,7 @@ const App: React.FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {windowWidth > 800 ? (
-        renderDesktop()
-      ) : (
-        <div>
-          {/* Renderizar algo para telas menores que 800px */}
-          <h1>Tela pequena: {windowWidth}px</h1>
-        </div>
-      )}
-      {renderMobile()}
+      {windowWidth > 800 ? renderDesktop() : <>{renderMobile()}</>}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
