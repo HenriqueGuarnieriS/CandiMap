@@ -14,12 +14,6 @@ import { MdOutlineTrendingUp, MdOutlineTrendingDown } from "react-icons/md";
 
 const FollowersGrowthChart = ({ data }: { data: any[] }) => {
   // Função para calcular a variação de seguidores entre dias consecutivos
-  const calculateDotSize = (entry: any, index: number, data: any[]) => {
-    if (index === 0) return 2; // Para o primeiro ponto, o tamanho será fixo
-    const previousFollowers = data[index - 1]?.followers ?? 0;
-    const followersDifference = Math.abs(entry.followers - previousFollowers);
-    return Math.min(Math.max(followersDifference / 500, 2), 10); // Ajusta o tamanho do ponto com base na variação
-  };
 
   // Calculate change for Followers
   const firstFollowers = data[0]?.followers ?? 0;

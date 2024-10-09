@@ -21,18 +21,10 @@ const CommentsChart = ({ data }: { data: any[] }) => {
 
   // Média simples dos últimos 30 dias
   const avgComments30Days = simpleAverage(data, "avg_comments");
-  const avgCommentsText = `Average Comments for last 30 days: ${avgComments30Days.toLocaleString(
-    "pt-BR"
-  )}`;
 
   // Variação entre o primeiro e último dia
   const firstComments = data[0]?.avg_comments ?? 0;
   const lastComments = data[data.length - 1]?.avg_comments ?? 0;
-  const commentsChange = lastComments - firstComments;
-  const commentsChangeText =
-    commentsChange >= 0
-      ? `${commentsChange.toLocaleString("pt-BR")}`
-      : `${Math.abs(commentsChange).toLocaleString("pt-BR")}`;
 
   // Variação Percentual
   const percentChange = ((lastComments - firstComments) / firstComments) * 100;

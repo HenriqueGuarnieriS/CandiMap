@@ -29,9 +29,6 @@ const LikesChart = ({ data }: { data: any[] }) => {
 
   // Média ponderada dos últimos 30 dias
   const avgLikes30Days = weightedAverage(data, "avg_likes");
-  const avgLikesText = `Average Likes (Weighted) for last 30 days: ${avgLikes30Days.toLocaleString(
-    "pt-BR"
-  )}`;
 
   // Variação entre o primeiro e último dia
   const firstLikes = data[0]?.avg_likes ?? 0;
@@ -48,14 +45,6 @@ const LikesChart = ({ data }: { data: any[] }) => {
     percentChange >= 0
       ? `${percentChange.toFixed(2)}%`
       : `${Math.abs(percentChange).toFixed(2)}%`;
-
-  // Função para calcular a variação de likes entre dias consecutivos
-  const calculateDotSize = (entry: any, index: number, data: any[]) => {
-    if (index === 0) return 2; // Para o primeiro ponto, o tamanho será fixo
-    const previousLikes = data[index - 1]?.avg_likes ?? 0;
-    const likesDifference = Math.abs(entry.avg_likes - previousLikes);
-    return Math.min(Math.max(likesDifference / 1000, 2), 10); // Ajuste o tamanho dos pontos com base na variação
-  };
 
   return (
     <>

@@ -11,10 +11,6 @@ interface PersonCardProps {
   person: Person | null;
 }
 
-const CardDetails = () => {
-  return <div></div>;
-};
-
 const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
