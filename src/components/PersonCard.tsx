@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Person from "../interfaces/Person";
-import { useQuery } from "@tanstack/react-query";
-import { fetchCandidateDetails } from "../services/tse";
-import { CandidateDetails } from "../interfaces/TSEDetails";
-import { PrestacaoDeContas } from "../interfaces/TSEContas";
+// import { useQuery } from "@tanstack/react-query";
+// import { fetchCandidateDetails } from "../services/tse";
+// import { CandidateDetails } from "../interfaces/TSEDetails";
+// import { PrestacaoDeContas } from "../interfaces/TSEContas";
 
-import { spinner } from "../mockdata/spinner";
-import Lottie from "lottie-react";
+// import { spinner } from "../mockdata/spinner";
+// import Lottie from "lottie-react";
 interface PersonCardProps {
   person: Person | null;
 }
@@ -29,16 +29,16 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
     };
   }, []);
 
-  const candiInfoUrl = person?.tseUrls?.candiInfo;
-  const candiContasUrl = person?.tseUrls?.candiContas;
-  const formatCurrency = (value: number | undefined) => {
-    if (value) {
-      return new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      }).format(value);
-    }
-  };
+  // const candiInfoUrl = person?.tseUrls?.candiInfo;
+  // const candiContasUrl = person?.tseUrls?.candiContas;
+  // const formatCurrency = (value: number | undefined) => {
+  //   if (value) {
+  //     return new Intl.NumberFormat("pt-BR", {
+  //       style: "currency",
+  //       currency: "BRL",
+  //     }).format(value);
+  //   }
+  // };
   // Condicionalmente dispara a query apenas se o candidateNumber estiver definido
   // const {
   //   data: candidateDetails,
