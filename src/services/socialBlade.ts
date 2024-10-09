@@ -26,8 +26,11 @@ export const fetchG1Apuracao = async (estado: string, cidade: string) => {
 export const fetchInstagramSocialBlade = async (username: string) => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/socialblade/${username}`
+      `https://fluxoapi-production.up.railway.app/socialblade/${username}`
     );
+    // const response = await axios.get(
+    //   `http://localhost:3000/socialblade/${username}`
+    // );
     return response.data;
   } catch (error) {
     console.error("Erro ao buscar detalhes do candidato:", error);
