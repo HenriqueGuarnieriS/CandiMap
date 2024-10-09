@@ -36,16 +36,16 @@ const renderDesktop = () => {
     <div className="w-24 bg-neutral-700  flex flex-col items-center h-screen ">
       <nav className=" w-16  py-4 ">
         <ul className="flex flex-col gap-4 w-full justify-center items-center text-center">
-          <li className="font-semibold bg-neutral-800 text-yellow-500 p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50" to="/">
-              <GiBrazil className="text-4xl" />
-              Mapa
+          <li className="font-semibold  bg-neutral-800 text-yellow-500  p-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/">
+              <MdSpaceDashboard className="text-4xl" />
+              Painel
             </Link>
           </li>
-          <li className="font-semibold bg-neutral-800 text-yellow-500  p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50" to="/panel">
-              <MdSpaceDashboard className="text-4xl" />
-              Panel
+          <li className="font-semibold bg-neutral-800 text-yellow-500 p-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/mapa">
+              <GiBrazil className="text-4xl" />
+              Mapa
             </Link>
           </li>
         </ul>

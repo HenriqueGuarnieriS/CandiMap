@@ -40,25 +40,25 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
     }
   };
   // Condicionalmente dispara a query apenas se o candidateNumber estiver definido
-  const {
-    data: candidateDetails,
-    error,
-    isLoading,
-  } = useQuery<CandidateDetails>({
-    queryKey: [`${person?.name}-${person?.number}-info`],
-    queryFn: () => fetchCandidateDetails(candiInfoUrl!),
-    enabled: !!candiInfoUrl, // Habilita a query apenas se candidateNumber estiver definido
-  });
+  // const {
+  //   data: candidateDetails,
+  //   error,
+  //   isLoading,
+  // } = useQuery<CandidateDetails>({
+  //   queryKey: [`${person?.name}-${person?.number}-info`],
+  //   queryFn: () => fetchCandidateDetails(candiInfoUrl!),
+  //   enabled: !!candiInfoUrl, // Habilita a query apenas se candidateNumber estiver definido
+  // });
 
-  const {
-    data: candidateContas,
-    error: errorContas,
-    isLoading: isLoadingContas,
-  } = useQuery<PrestacaoDeContas>({
-    queryKey: [`${person?.name}-${person?.number}-contas`],
-    queryFn: () => fetchCandidateDetails(candiContasUrl!),
-    enabled: !!candiContasUrl, // Habilita a query apenas se candidateNumber estiver definido
-  });
+  // const {
+  //   data: candidateContas,
+  //   error: errorContas,
+  //   isLoading: isLoadingContas,
+  // } = useQuery<PrestacaoDeContas>({
+  //   queryKey: [`${person?.name}-${person?.number}-contas`],
+  //   queryFn: () => fetchCandidateDetails(candiContasUrl!),
+  //   enabled: !!candiContasUrl, // Habilita a query apenas se candidateNumber estiver definido
+  // });
 
   const renderDesktop = () => {
     return (
@@ -69,8 +69,10 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
             alt=""
             className="w-full rounded-lg h-full"
           />
-
-          <div className="absolute bottom-0 h-[40vh] bg-opacity-90 bg-white w-full overflow-y-auto shadow">
+          {/* <div className="absolute top-2 right-2 bg-white shadow-lg font-semibold z-50 px-2 py-1 rounded-lg ">
+            {candidateDetails?.descricaoTotalizacao}
+          </div> */}
+          {/* <div className="absolute bottom-0 h-[40vh] bg-opacity-90 bg-white w-full overflow-y-auto shadow">
             {candidateDetails && (
               <div className="px-3  py-4 flex flex-col gap-1 ">
                 <div className="flex flex-col gap-1 border-b-2 pb-2 border-gray-300">
@@ -120,7 +122,7 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       )
     );
@@ -135,8 +137,11 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
             alt=""
             className="w-full rounded-lg h-full"
           />
+          {/* <div className="absolute top-2 right-2 bg-red-500 z-50 px-2 py-1">
+            {candidateDetails?.descricaoTotalizacao}
+          </div> */}
 
-          <div className="absolute bottom-0 h-[40vh] bg-opacity-95 bg-white w-full overflow-y-auto shadow">
+          {/* <div className="absolute bottom-0 h-[40vh] bg-opacity-95 bg-white w-full overflow-y-auto shadow">
             {candidateDetails && (
               <div className="px-3  py-4 flex flex-col gap-1 ">
                 <div className="flex flex-col gap-1 border-b-2 pb-2 border-gray-300">
@@ -186,19 +191,19 @@ const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       )
     );
   };
 
-  if (isLoading || isLoadingContas)
-    return (
-      <div>
-        <Lottie animationData={spinner} />
-      </div>
-    );
-  if (error || errorContas) return <div>Erro ao carregar os detalhes.</div>;
+  // if (isLoading)
+  //   return (
+  //     <div>
+  //       <Lottie animationData={spinner} />
+  //     </div>
+  //   );
+  // if (error) return <div>Erro ao carregar os detalhes.</div>;
 
   return <>{windowWidth > 800 ? renderDesktop() : <>{renderMobile()}</>}</>;
 };
