@@ -1,0 +1,51 @@
+export const instagramAccounts = [
+  {
+    city: "São Paulo",
+    state: "São Paulo",
+    name: "Guto Zacarias",
+    instagram: "gutozacariasmbl",
+    socialBlade: {},
+  },
+  {
+    city: "Curitiba",
+    state: "Paraná",
+    name: "João Bettega",
+    instagram: "bettega_",
+    socialBlade: {},
+  },
+  {
+    city: "Rio de Janeiro",
+    state: "Rio de Janeiro",
+    name: "Gabriel Costenaro",
+    instagram: "costenarorj",
+    socialBlade: {},
+  },
+  {
+    city: "São Paulo",
+    state: "São Paulo",
+    name: "Renato Battista",
+    instagram: "renatobattistambl",
+    socialBlade: {},
+  },
+  {
+    city: "Salto",
+    state: "São Paulo",
+    name: "Kim Kataguiri",
+    instagram: "kimkataguiri",
+    socialBlade: {},
+  },
+  {
+    city: "Natal",
+    state: "Rio Grande do Norte",
+    name: "Matheus Faustino",
+    instagram: "faustinorn",
+    socialBlade: {},
+  },
+  {
+    city: "São Paulo",
+    state: "São Paulo",
+    name: "Amanda Vettorazzo",
+    instagram: "amanda.vettorazzo",
+    socialBlade: {},
+  },
+];
