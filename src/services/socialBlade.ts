@@ -26,10 +26,10 @@ export const fetchG1Apuracao = async (estado: string, cidade: string) => {
 export const fetchInstagramSocialBlade = async (username: string) => {
   try {
     const response = await axios.get(
-      `https://fluxoapi-production.up.railway.app/socialblade/${username}`
+      `https://fluxoapi-production.up.railway.app/tracking/${username}`
     );
     // const response = await axios.get(
-    //   `http://localhost:3000/socialblade/${username}`
+    //   `http://localhost:3000/tracking/${username}`
     // );
     return response.data;
   } catch (error) {
