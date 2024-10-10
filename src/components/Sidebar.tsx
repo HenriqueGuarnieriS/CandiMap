@@ -23,7 +23,7 @@ const renderMobile = () => {
               to="/mapa"
             >
               <MdSpaceDashboard className="text-2xl" />
-              <span>Home</span>
+              <span>Mapa</span>
             </Link>
           </li>
         </ul>
