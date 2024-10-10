@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { fetchInstagramSocialBlade } from "../../services/socialBlade";
 import { useQueries, UseQueryResult } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import { spinner } from "../../mockdata/spinner";
@@ -8,6 +7,8 @@ import { instagramAccounts } from "../../mockdata/instagrams";
 import { MdAccountCircle } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai"; // ícone de fechar o modal
 import AccountCard from "./components/AccountCard";
+import { generateToken } from "../../services/auth";
+import { fetchInstagramData } from "../../services/socialBlade";
 
 const Panel = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -16,16 +17,6 @@ const Panel = () => {
   const [selectedAccount, setSelectedAccount] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false); // estado para controlar o modal
 
-  const accountsQueries: UseQueryResult<any, Error>[] = useQueries({
-    queries: filteredPeople.map((user) => {
-      return {
-        queryKey: [user.name],
-        queryFn: () => fetchInstagramSocialBlade(user.instagram),
-        enabled: !!user.instagram,
-      };
-    }),
-  });
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -33,10 +24,23 @@ const Panel = () => {
 
     window.addEventListener("resize", handleResize);
 
+    // Gera o token JWT ao carregar o componente
+    generateToken(); // Chama a função para gerar o token no backend
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const accountsQueries: UseQueryResult<any, Error>[] = useQueries({
+    queries: filteredPeople.map((user) => {
+      return {
+        queryKey: [user.name],
+        queryFn: () => fetchInstagramData(user.instagram),
+        enabled: !!user.instagram,
+      };
+    }),
+  });
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value;
