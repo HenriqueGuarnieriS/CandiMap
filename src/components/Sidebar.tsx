@@ -14,16 +14,16 @@ const renderMobile = () => {
               to="/"
             >
               <GiBrazil className="text-2xl" />
-              <span>Home</span>
+              <span>Painel</span>
             </Link>
           </li>
           <li>
             <Link
               className="z-50 font-semibold bg-white p-2 shadow rounded-md w-full flex flex-col items-center"
-              to="/panel"
+              to="/mapa"
             >
               <MdSpaceDashboard className="text-2xl" />
-              <span>Panel</span>
+              <span>Home</span>
             </Link>
           </li>
         </ul>
