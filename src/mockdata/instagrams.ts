@@ -7,6 +7,13 @@ export const instagramAccounts = [
     socialBlade: {},
   },
   {
+    city: "São Paulo",
+    state: "São Paulo",
+    name: "Arthur do Val",
+    instagram: "arthurmoledoval",
+    socialBlade: {},
+  },
+  {
     city: "Curitiba",
     state: "Paraná",
     name: "João Bettega",
