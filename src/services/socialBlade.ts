@@ -3,12 +3,12 @@ import axios from "axios";
 export const fetchInstagramData = async (username: string) => {
   const apiUrl =
     process.env.NODE_ENV === "production"
-      ? import.meta.env.VITE_BACKEND_URL
-      : "http://localhost:3000"; // URL local para desenvolvimento
+      ? process.env.VITE_BACKEND_URL // URL de produção
+      : "http://localhost:3000"; // URL de desenvolvimento
 
   try {
     const response = await axios.get(`${apiUrl}/tracking/${username}`, {
-      withCredentials: true, // Para enviar cookies junto com a requisição
+      withCredentials: true, // Habilita o envio de cookies
     });
     return response.data;
   } catch (error) {
