@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchInstagramSocialBlade = async (username: string) => {
+export const fetchInstagramData = async (username: string) => {
   const apiUrl =
     process.env.NODE_ENV === "production"
       ? import.meta.env.VITE_BACKEND_URL
