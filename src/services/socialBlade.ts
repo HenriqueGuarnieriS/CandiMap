@@ -1,19 +1,21 @@
-const apiUrl =
-  process.env.NODE_ENV === "production"
-    ? process.env.VITE_BACKEND_URL // Variável de ambiente para o backend em produção
-    : "http://localhost:3000"; // URL do backend local durante o desenvolvimento
+import axios from "axios";
 
-export const fetchInstagramData = async (username: string) => {
+export const fetchInstagramSocialBlade = async (username: string) => {
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? import.meta.env.VITE_BACKEND_URL
+      : "http://localhost:3000"; // URL local para desenvolvimento
+
   try {
-    const response = await fetch(`${apiUrl}/tracking/${username}`, {
-      credentials: "include", // Inclui cookies nas requisições
+    const response = await axios.get(`${apiUrl}/tracking/${username}`, {
+      withCredentials: true, // Para enviar cookies junto com a requisição
     });
-    return await response.json();
+    return response.data;
   } catch (error) {
-    console.error("Erro ao buscar os dados:", error);
+    console.error("Erro ao buscar dados do SocialBlade:", error);
+    throw error;
   }
 };
-
 // export const fetchInstagramSocialBlade = async (username: string) => {
 //   try {
 //     // const response = await axios.get(
