@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
-import { useQueries, UseQueryResult } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import { spinner } from "../../mockdata/spinner";
 import CustomChart from "../../components/CustomChart";
-import { instagramAccounts } from "../../mockdata/instagrams";
 import { MdAccountCircle } from "react-icons/md";
-import { AiOutlineClose } from "react-icons/ai"; // ícone de fechar o modal
+import { AiOutlineClose } from "react-icons/ai";
 import AccountCard from "./components/AccountCard";
 import { generateToken } from "../../services/auth";
 import { fetchInstagramData } from "../../services/socialBlade";
+import InstagramProfile from "../../interfaces/Instagram";
 
 const Panel = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredPeople, setFilteredPeople] = useState(instagramAccounts);
+  const [filteredPeople, setFilteredPeople] = useState<InstagramProfile[]>();
   const [selectedAccount, setSelectedAccount] = useState<any>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // estado para controlar o modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,30 +24,31 @@ const Panel = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Gera o token JWT ao carregar o componente
-    generateToken(); // Chama a função para gerar o token no backend
+    generateToken();
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  const accountsQueries: UseQueryResult<any, Error>[] = useQueries({
-    queries: filteredPeople.map((user) => {
-      return {
-        queryKey: [user.name],
-        queryFn: () => fetchInstagramData(user.instagram),
-        enabled: !!user.instagram,
-      };
-    }),
+  const {
+    data: accountsQueries,
+    isLoading,
+    isError,
+  }: UseQueryResult<InstagramProfile[], Error> = useQuery({
+    queryKey: ["instagram-data"],
+    queryFn: () =>
+      fetchInstagramData().then((data) => {
+        setFilteredPeople(data);
+        return data;
+      }),
   });
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value;
     setSearchTerm(searchTerm);
-
-    const filtered = instagramAccounts.filter((p) =>
-      p.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const filtered = accountsQueries?.filter((accounts) =>
+      accounts.id.display_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredPeople(filtered);
   };
@@ -61,18 +62,16 @@ const Panel = () => {
     setIsModalOpen(false); // fecha o modal
   };
 
-  if (accountsQueries.some((query) => query.isLoading))
+  if (isLoading)
     return (
       <div className="w-full h-fill flex justify-center items-center bg-neutral-800 min-h-screen">
         <Lottie animationData={spinner} />
       </div>
     );
-  if (accountsQueries.some((query) => query.isError))
-    return <div>Erro ao carregar os detalhes.</div>;
+  if (isError) return <div>Erro ao carregar os detalhes.</div>;
 
   // Determine if the layout should be desktop or mobile based on screen width
   const isDesktop = windowWidth >= 800;
-
   return (
     <div className="flex flex-col w-full min-h-screen max-h-screen p-4 gap-4 bg-neutral-800 relative">
       <div className="shadow bg-neutral-700 rounded-lg p-4 relative">
@@ -89,18 +88,16 @@ const Panel = () => {
         // Desktop Layout
         <div className="flex gap-4 max-h-screen overflow-hidden">
           <div className="w-[60%] h-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 overflow-y-auto scrollbar scrollbar-thumb-neutral-700 scrollbar-track-neutral-900 scroll-smooth max-h-screen">
-            {filteredPeople &&
-              accountsQueries.map((query, index) => {
-                const instagramAccounts = query.data;
-                return (
-                  <AccountCard
-                    key={`${filteredPeople[index].instagram}-${index}`}
-                    socialBlade={instagramAccounts}
-                    handleSelectedAccount={handleSelectedAccount}
-                    account={selectedAccount}
-                  />
-                );
-              })}
+            {filteredPeople?.map((account, index) => {
+              return (
+                <AccountCard
+                  key={`${account.id.username}-${index}`}
+                  socialBlade={account}
+                  handleSelectedAccount={handleSelectedAccount}
+                  account={selectedAccount}
+                />
+              );
+            })}
           </div>
           <div className="w-[40%] h-full shadow bg-neutral-700 rounded-lg p-4 overflow-y-auto scrollbar scrollbar-thumb-neutral-700 scrollbar-track-neutral-900 scroll-smooth">
             {selectedAccount ? (
@@ -131,19 +128,17 @@ const Panel = () => {
       ) : (
         // Mobile Layout
         <div className="grid-cols-1 p-4 overflow-y-auto scrollbar scrollbar-thumb-neutral-700 scrollbar-track-neutral-900 scroll-smooth ">
-          {filteredPeople &&
-            accountsQueries.map((query, index) => {
-              const instagramAccounts = query.data;
-              return (
-                <AccountCard
-                  key={`${filteredPeople[index].instagram}-${index}`}
-                  socialBlade={instagramAccounts}
-                  handleSelectedAccount={handleSelectedAccount}
-                  account={selectedAccount}
-                  isMobile={true}
-                />
-              );
-            })}
+          {filteredPeople?.map((account, index) => {
+            return (
+              <AccountCard
+                key={`${account.id.username}-${index}`}
+                socialBlade={account}
+                handleSelectedAccount={handleSelectedAccount}
+                account={selectedAccount}
+                isMobile={true}
+              />
+            );
+          })}
 
           {/* Modal for selected account in mobile */}
           {isModalOpen && (

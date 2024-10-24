@@ -1,10 +1,11 @@
 import axios from "axios";
+import InstagramProfile from "../interfaces/Instagram";
 
-export const fetchInstagramData = async (username: string) => {
+export const fetchInstagramData = async (): Promise<InstagramProfile[]> => {
   const apiUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
   try {
-    const response = await axios.get(`${apiUrl}/tracking/${username}`, {
+    const response = await axios.get(`${apiUrl}/api/instagrams`, {
       withCredentials: true, // Para enviar cookies
     });
     return response.data;
@@ -13,18 +14,3 @@ export const fetchInstagramData = async (username: string) => {
     throw error;
   }
 };
-
-// export const fetchInstagramSocialBlade = async (username: string) => {
-//   try {
-//     // const response = await axios.get(
-//     //   `https://fluxoapi-production.up.railway.app/tracking/${username}`
-//     // );
-//     const response = await axios.get(
-//       `http://localhost:3000/tracking/${username}`
-//     );
-//     return response.data;
-//   } catch (error) {
-//     console.error("Erro ao buscar detalhes do candidato:", error);
-//     throw error;
-//   }
-// };
