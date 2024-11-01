@@ -38,7 +38,7 @@ const Partidos = () => {
   if (isError) return <div>Erro ao carregar os detalhes.</div>;
 
   return (
-    <div className="flex flex-col gap-4 w-full px-10 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
+    <div className="flex flex-col gap-4 w-full px-4 lg:px-10  py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
       <h1 className="text-center font-extrabold text-4xl py-4 bg-neutral-700 rounded-lg">
         Vereadores por partido (2024)
       </h1>

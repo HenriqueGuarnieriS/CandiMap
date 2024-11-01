@@ -18,6 +18,15 @@ const renderMobile = () => {
           <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
             <Link
               className="z-50 flex flex-col  items-center text-sm "
+              to="/partidos"
+            >
+              <AiFillProject className="text-3xl" />
+              Partidos
+            </Link>
+          </li>
+          <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link
+              className="z-50 flex flex-col  items-center text-sm "
               to="/mapa"
             >
               <GiBrazil className="w-7 h-7" />
