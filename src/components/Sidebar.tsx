@@ -1,7 +1,8 @@
 import { GiBrazil } from "react-icons/gi";
-import { MdSpaceDashboard } from "react-icons/md";
+import { MdHowToVote, MdSpaceDashboard } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useWindowWidth from "../utils/useWindowWidth";
+import { AiFillProject } from "react-icons/ai";
 
 const renderMobile = () => {
   return (
@@ -32,16 +33,28 @@ const renderDesktop = () => {
   return (
     <div className="w-24 bg-neutral-700  flex flex-col items-center h-screen ">
       <nav className=" w-16  py-4 ">
-        <ul className="flex flex-col gap-4 w-full justify-center items-center text-center">
-          <li className="font-semibold  bg-neutral-800 text-yellow-500  p-2 shadow rounded-md w-full flex flex-col items-center">
+        <ul className=" text-sm flex flex-col gap-4 w-full justify-center items-center text-center">
+          <li className="font-semibold  bg-neutral-800  text-missaoCores-missaoYellow  p-2 shadow rounded-md w-full flex flex-col items-center">
             <Link className="z-50 flex flex-col  items-center" to="/">
-              <MdSpaceDashboard className="text-4xl" />
+              <MdSpaceDashboard className="text-3xl" />
               Painel
             </Link>
           </li>
-          <li className="font-semibold bg-neutral-800 text-yellow-500 p-2 shadow rounded-md w-full flex flex-col items-center">
+          <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/partidos">
+              <AiFillProject className="text-3xl" />
+              Partidos
+            </Link>
+          </li>
+          {/* <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/eleicoes">
+              <MdHowToVote className="text-3xl" />
+              Eleições
+            </Link>
+          </li> */}
+          <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
             <Link className="z-50 flex flex-col  items-center" to="/mapa">
-              <GiBrazil className="text-4xl" />
+              <GiBrazil className="text-3xl" />
               Mapa
             </Link>
           </li>
@@ -52,6 +65,14 @@ const renderDesktop = () => {
 };
 
 const Sidebar = () => {
+  // useEffect(() => {
+  //   const handlePopState = (e: PopStateEvent) => {
+  //     console.log(e);
+  //   };
+  //   console.log(window.location.href);
+  //   window.addEventListener("popstate", handlePopState);
+  // }, [window.location.href]);
+
   const windowWidth = useWindowWidth();
 
   return <>{windowWidth > 800 ? renderDesktop() : renderMobile()}</>;

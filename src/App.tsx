@@ -6,6 +6,8 @@ import Home from "./pages/Home/Home";
 import Panel from "./pages/Panel/Panel";
 import Sidebar from "./components/Sidebar";
 import useWindowWidth from "./utils/useWindowWidth";
+import Partidos from "./pages/Partidos/Partidos";
+import Eleicoes from "./pages/Eleicoes/Eleicoes";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +22,8 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Panel />} />
             <Route path="/mapa" element={<Home />} />
+            <Route path="/partidos" element={<Partidos />} />
+            <Route path="/eleicoes" element={<Eleicoes />} />
           </Routes>
         </div>
       </Router>
