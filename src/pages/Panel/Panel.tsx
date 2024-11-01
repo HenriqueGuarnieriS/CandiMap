@@ -112,7 +112,9 @@ const Panel = () => {
                     "pt-BR"
                   )}
                 </p>
-
+                <p className=" text-missaoCores-missaoYellow  mt-4 italic text-end ">
+                  Os dados referem-se aos últimos 30 dias.
+                </p>
                 <div className="flex flex-col gap-1 my-4">
                   <CustomChart data={selectedAccount.daily.slice().reverse()} />
                 </div>
