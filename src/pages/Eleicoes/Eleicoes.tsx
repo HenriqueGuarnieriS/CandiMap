@@ -1,5 +1,3 @@
-import React from "react";
-
 const Eleicoes = () => {
   return (
     <div className="flex flex-col gap-4 w-full px-10 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
