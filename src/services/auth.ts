@@ -3,9 +3,10 @@ import axios from "axios";
 
 export const generateToken = async (): Promise<string | null> => {
   try {
-    const response = await axios.get("http://localhost:3000/generate-token", {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      `${import.meta.env.VITE_BACKEND_URL}/generate-token`,
+      { withCredentials: true }
+    );
 
     const token = response.data.token;
     if (token) {
