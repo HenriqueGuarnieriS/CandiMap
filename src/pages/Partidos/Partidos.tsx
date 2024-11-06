@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { PartidoInterface } from "../../interfaces/Partidos";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { fetchPartidosData } from "../../services/partidos";
-import PartidoCard from "./components/PartidoCard";
-import LoadingSpinner from "../../components/LoadingSpinner";
-import SearchInput from "../../components/SearchInput";
 import { FaInfinity } from "react-icons/fa6";
+import LoadingSpinner from "../../components/LoadingSpinner";
+
+// Imports dinâmicos
+const PartidoCard = React.lazy(() => import("./components/PartidoCard"));
+const SearchInput = React.lazy(() => import("../../components/SearchInput"));
+const ErrorComponent = React.lazy(
+  () => import("../../components/ErrorComponent")
+);
 
 const Partidos = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,24 +39,38 @@ const Partidos = () => {
     setFilteredPartidos(filtered);
   };
 
-  if (isLoading) return <LoadingSpinner />;
-  if (isError) return <div>Erro ao carregar os detalhes.</div>;
+  if (isLoading) {
+    return (
+      <Suspense fallback={<LoadingSpinner />}>
+        <LoadingSpinner />
+      </Suspense>
+    );
+  }
+
+  if (isError) {
+    return (
+      <Suspense fallback={<LoadingSpinner />}>
+        <ErrorComponent />
+      </Suspense>
+    );
+  }
 
   return (
-    <div className="flex flex-col gap-4 w-full px-4 lg:px-10  py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
+    <div className="flex flex-col gap-4 w-full px-4 lg:px-10 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
       <h1 className="text-center font-extrabold text-4xl py-4 bg-neutral-700 rounded-lg">
         Vereadores por partido (2024)
       </h1>
 
       {/* Campo de pesquisa */}
-      <SearchInput searchTerm={searchTerm} handleSearch={handleSearch} />
-      {/* https://static.poder360.com.br/2023/11/missao-partido-mbl-1.png */}
-      {/* https://static.poder360.com.br/2023/11/missao-logo-2.png */}
+      <div className="sticky -top-6 z-10 bg-neutral-800 py-2">
+        <Suspense fallback={<div>Loading search...</div>}>
+          <SearchInput searchTerm={searchTerm} handleSearch={handleSearch} />
+        </Suspense>
+      </div>
 
-      {/* <PartidoCard key={partido.sigla_partido} partido={partido} /> */}
       {/* Grid de partidos filtrados */}
       <div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
           {!searchTerm && (
             <div className="shadow rounded-lg flex flex-col bg-neutral-700">
               <div className="grid grid-cols-2 place-items-center text-2xl font-bold p-4 gap-4">
@@ -79,7 +98,12 @@ const Partidos = () => {
             </div>
           )}
           {filteredPartidos?.map((partido) => (
-            <PartidoCard key={partido.sigla_partido} partido={partido} />
+            <Suspense
+              key={partido.sigla_partido}
+              fallback={<div>Loading partido...</div>}
+            >
+              <PartidoCard partido={partido} />
+            </Suspense>
           ))}
         </div>
       </div>

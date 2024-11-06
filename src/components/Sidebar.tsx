@@ -74,14 +74,6 @@ const renderDesktop = () => {
 };
 
 const Sidebar = () => {
-  // useEffect(() => {
-  //   const handlePopState = (e: PopStateEvent) => {
-  //     console.log(e);
-  //   };
-  //   console.log(window.location.href);
-  //   window.addEventListener("popstate", handlePopState);
-  // }, [window.location.href]);
-
   const windowWidth = useWindowWidth();
 
   return <>{windowWidth > 800 ? renderDesktop() : renderMobile()}</>;

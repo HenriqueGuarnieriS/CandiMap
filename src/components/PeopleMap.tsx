@@ -96,6 +96,7 @@ const PeopleMap: React.FC<PeopleMapProps> = ({ onMarkerClick }) => {
               <Popup>
                 <div className="text-center flex flex-col  items-center ">
                   <img
+                    loading="lazy"
                     src={person.image}
                     alt={person.name}
                     className="w-16 h-16 rounded-full mx-auto object-cover"

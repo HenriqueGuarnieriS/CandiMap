@@ -1,4 +1,5 @@
 import React from "react";
+import { IoMdSearch } from "react-icons/io";
 
 interface SearchInputProps {
   searchTerm: string;
@@ -14,9 +15,10 @@ const SearchInput: React.FC<SearchInputProps> = ({
       type="text"
       value={searchTerm}
       onChange={handleSearch}
-      placeholder="Buscar partido"
-      className="p-2 border border-neutral-900 rounded w-full bg-neutral-800 text-white"
-    />
+      placeholder={"Buscar partido"}
+      className="p-2 border border-neutral-900 rounded w-full bg-neutral-800 text-white relative"
+    ></input>
+    <IoMdSearch className="absolute right-6 top-9 w-5 h-5 text-white" />
   </div>
 );
 
