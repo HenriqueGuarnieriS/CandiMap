@@ -1,5 +1,5 @@
-import { GiBrazil } from "react-icons/gi";
-import { MdSpaceDashboard } from "react-icons/md";
+import { GiBrazil, GiMoneyStack } from "react-icons/gi";
+import { MdHowToVote, MdSpaceDashboard } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useWindowWidth from "../utils/useWindowWidth";
 import { AiFillProject } from "react-icons/ai";
@@ -25,12 +25,21 @@ const renderMobile = () => {
             </Link>
           </li>
           <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link
-              className="z-50 flex flex-col  items-center text-sm "
-              to="/mapa"
-            >
-              <GiBrazil className="w-7 h-7" />
-              Mapa
+            <Link className="z-50 flex flex-col  items-center" to="/folha">
+              <MdHowToVote className="text-3xl" />
+              Judiciário
+            </Link>
+          </li>
+          <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/educacao">
+              <MdHowToVote className="text-3xl" />
+              Educação
+            </Link>
+          </li>
+          <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/economia">
+              <GiMoneyStack className="text-3xl" />
+              Economia
             </Link>
           </li>
         </ul>
@@ -55,18 +64,30 @@ const renderDesktop = () => {
               Partidos
             </Link>
           </li>
-          {/* <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex flex-col  items-center" to="/eleicoes">
-              <MdHowToVote className="text-3xl" />
-              Eleições
-            </Link>
-          </li> */}
           <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/folha">
+              <MdHowToVote className="text-3xl" />
+              Judiciário
+            </Link>
+          </li>
+          <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/educacao">
+              <MdHowToVote className="text-3xl" />
+              Educação
+            </Link>
+          </li>
+          <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
+            <Link className="z-50 flex flex-col  items-center" to="/economia">
+              <GiMoneyStack className="text-3xl" />
+              Economia
+            </Link>
+          </li>
+          {/* <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
             <Link className="z-50 flex flex-col  items-center" to="/mapa">
               <GiBrazil className="text-3xl" />
               Mapa
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

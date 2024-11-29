@@ -11,6 +11,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
+      "/judi": {
+        target: "http://localhost:8000", // URL do backend
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/judi/, ""),
+      },
     },
   },
 });

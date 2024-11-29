@@ -64,7 +64,11 @@ const Partidos = () => {
       {/* Campo de pesquisa */}
       <div className="sticky -top-6 z-10 bg-neutral-800 py-2">
         <Suspense fallback={<div>Loading search...</div>}>
-          <SearchInput searchTerm={searchTerm} handleSearch={handleSearch} />
+          <SearchInput
+            searchTerm={searchTerm}
+            handleSearch={handleSearch}
+            placeholder="Buscar partido"
+          />
         </Suspense>
       </div>
 
@@ -97,6 +101,7 @@ const Partidos = () => {
               />
             </div>
           )}
+
           {filteredPartidos?.map((partido) => (
             <Suspense
               key={partido.sigla_partido}

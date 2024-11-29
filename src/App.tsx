@@ -7,8 +7,10 @@ import Panel from "./pages/Panel/Panel";
 import Sidebar from "./components/Sidebar";
 import useWindowWidth from "./utils/useWindowWidth";
 import Partidos from "./pages/Partidos/Partidos";
-import Eleicoes from "./pages/Eleicoes/Eleicoes";
 import { generateToken } from "./services/auth";
+import Educacao from "./pages/Educacao/Educacao";
+import Economia from "./pages/Economia/Economia";
+import Judiciario from "./pages/Judiciario/Judiciario";
 
 const queryClient = new QueryClient();
 const App: React.FC = () => {
@@ -26,7 +28,9 @@ const App: React.FC = () => {
             <Route path="/" element={<Panel />} />
             <Route path="/mapa" element={<Home />} />
             <Route path="/partidos" element={<Partidos />} />
-            <Route path="/eleicoes" element={<Eleicoes />} />
+            <Route path="/folha" element={<Judiciario />} />
+            <Route path="/educacao" element={<Educacao />} />
+            <Route path="/economia" element={<Economia />} />
           </Routes>
         </div>
       </Router>
