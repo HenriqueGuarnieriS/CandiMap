@@ -1,4 +1,4 @@
-import { GiBrazil, GiMoneyStack } from "react-icons/gi";
+import { GiMoneyStack } from "react-icons/gi";
 import { MdHowToVote, MdSpaceDashboard } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useWindowWidth from "../utils/useWindowWidth";
