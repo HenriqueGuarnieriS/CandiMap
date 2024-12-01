@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
 import Panel from "./pages/Panel/Panel";
 import Sidebar from "./components/Sidebar";
 import useWindowWidth from "./utils/useWindowWidth";
@@ -26,7 +25,6 @@ const App: React.FC = () => {
 
           <Routes>
             <Route path="/" element={<Panel />} />
-            <Route path="/mapa" element={<Home />} />
             <Route path="/partidos" element={<Partidos />} />
             <Route path="/folha" element={<Judiciario />} />
             <Route path="/educacao" element={<Educacao />} />

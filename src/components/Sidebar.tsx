@@ -1,54 +1,15 @@
-import { GiMoneyStack } from "react-icons/gi";
-import { MdHowToVote, MdSpaceDashboard } from "react-icons/md";
+import { GiMoneyStack, GiWhiteBook } from "react-icons/gi";
+import { MdSpaceDashboard } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useWindowWidth from "../utils/useWindowWidth";
-import { AiFillProject } from "react-icons/ai";
 import { MouseEventHandler, useState } from "react";
-import { RiMenuFold2Line, RiMenuFoldLine } from "react-icons/ri";
+import {
+  RiGovernmentFill,
+  RiMenuFold2Line,
+  RiMenuFoldLine,
+} from "react-icons/ri";
+import { GoLaw } from "react-icons/go";
 
-const renderMobile = () => {
-  return (
-    <div className=" bg-neutral-700 flex   w-full  overflow-x-auto">
-      <nav className="  px-4 py-2 ">
-        <ul className="flex  gap-4 w-full  justify-center items-center   ">
-          <li className="font-semibold  bg-neutral-800 text-yellow-500  px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex flex-col  items-center text-sm " to="/">
-              <MdSpaceDashboard className="w-7 h-7" />
-              Painel
-            </Link>
-          </li>
-          <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link
-              className="z-50 flex flex-col  items-center text-sm "
-              to="/partidos"
-            >
-              <AiFillProject className="text-3xl" />
-              Partidos
-            </Link>
-          </li>
-          <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex flex-col  items-center" to="/folha">
-              <MdHowToVote className="text-3xl" />
-              Judiciário
-            </Link>
-          </li>
-          <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex flex-col  items-center" to="/educacao">
-              <MdHowToVote className="text-3xl" />
-              Educação
-            </Link>
-          </li>
-          <li className="font-semibold bg-neutral-800 text-yellow-500 px-3 py-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex flex-col  items-center" to="/economia">
-              <GiMoneyStack className="text-3xl" />
-              Economia
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  );
-};
 const renderMobileItems = (
   handleOpenSidebar: MouseEventHandler<Element> | undefined
 ) => {
@@ -70,7 +31,7 @@ const renderMobileItems = (
             className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center"
           >
             <Link className="z-50 flex   items-center gap-2" to="/partidos">
-              <AiFillProject className="text-3xl" />
+              <RiGovernmentFill className="text-3xl" />
               Partidos
             </Link>
           </li>
@@ -79,7 +40,7 @@ const renderMobileItems = (
             className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center"
           >
             <Link className="z-50 flex  items-center gap-2" to="/folha">
-              <MdHowToVote className="text-3xl" />
+              <GoLaw className="text-3xl" />
               Judiciário
             </Link>
           </li>
@@ -88,7 +49,7 @@ const renderMobileItems = (
             className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center"
           >
             <Link className="z-50 flex   items-center gap-2" to="/educacao">
-              <MdHowToVote className="text-3xl" />
+              <GiWhiteBook className="text-3xl" />
               Educação
             </Link>
           </li>
@@ -101,20 +62,12 @@ const renderMobileItems = (
               Economia
             </Link>
           </li>
-          {/* <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex flex-col  items-center" to="/mapa">
-              <GiBrazil className="text-3xl" />
-              Mapa
-            </Link>
-          </li> */}
         </ul>
       </nav>
     </div>
   );
 };
-const renderDesktopItems = (
-  handleOpenSidebar: MouseEventHandler<Element> | undefined
-) => {
+const renderDesktopItems = () => {
   return (
     <div className="  flex flex-col items-center w-full h-full mt-14 ">
       <nav className=" w-full   ">
@@ -127,19 +80,19 @@ const renderDesktopItems = (
           </li>
           <li className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
             <Link className="z-50 flex   items-center gap-2" to="/partidos">
-              <AiFillProject className="text-3xl" />
+              <RiGovernmentFill className="text-3xl" />
               Partidos
             </Link>
           </li>
           <li className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
             <Link className="z-50 flex  items-center gap-2" to="/folha">
-              <MdHowToVote className="text-3xl" />
+              <GoLaw className="text-3xl" />
               Judiciário
             </Link>
           </li>
           <li className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
             <Link className="z-50 flex   items-center gap-2" to="/educacao">
-              <MdHowToVote className="text-3xl" />
+              <GiWhiteBook className="text-3xl" />
               Educação
             </Link>
           </li>
@@ -149,12 +102,6 @@ const renderDesktopItems = (
               Economia
             </Link>
           </li>
-          {/* <li className="font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex flex-col  items-center" to="/mapa">
-              <GiBrazil className="text-3xl" />
-              Mapa
-            </Link>
-          </li> */}
         </ul>
       </nav>
     </div>
@@ -197,21 +144,21 @@ const SidebarDesktop: React.FC<PropsComponent> = ({
   handleOpenSidebar,
 }) => {
   return (
-    <div className=" bg-neutral-700 flex relative px-2 text-cente py-4">
+    <div className=" bg-neutral-700 flex relative px-2 text-cente ">
       {isOpen ? (
         <div className=" flex flex-col  top-0 z-50 overflow-auto relative ">
           <div className="w-60 bg-neutral-700  flex flex-col items-center h-screen px-2">
             <RiMenuFoldLine
               onClick={handleOpenSidebar}
-              className=" cursor-pointer w-7 h-7 text-missaoCores-missaoYellow   absolute top-0 right-2"
+              className=" cursor-pointer w-7 h-7 text-missaoCores-missaoYellow  mt-3 absolute top-0 right-2"
             />
-            {renderDesktopItems(handleOpenSidebar)}
+            {renderDesktopItems()}
           </div>
         </div>
       ) : (
         <RiMenuFold2Line
           onClick={handleOpenSidebar}
-          className=" cursor-pointer  w-7 h-7 text-missaoCores-missaoYellow "
+          className=" cursor-pointer  w-7 h-7 text-missaoCores-missaoYellow  mt-3"
         />
       )}
     </div>
@@ -224,10 +171,8 @@ const Sidebar = () => {
 
   const handleOpenSidebar = () => {
     setIsOpen((prev) => !prev);
-    console.log(isOpen);
   };
 
-  // return <>{windowWidth > 800 ? renderDesktop() : renderMobile()}</>;
   return (
     <>
       {windowWidth > 800 ? (
