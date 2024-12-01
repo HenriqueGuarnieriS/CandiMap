@@ -36,13 +36,13 @@ const EduCharts: React.FC<EduEscolasEstadoProps> = ({ data, topic }) => {
 
   return (
     <div className=" flex flex-col bg-neutral-800 p-2 ">
-      <h4 className=" text-2xl font-semibold ">{topic}</h4>
-      <div className="grid-cols-2 grid gap-4 p-4 justify-start w-full">
+      <h4 className=" text-2xl font-semibold mb-4 ">{topic}</h4>
+      <div className="grid-cols-1 lg:grid-cols-2 grid gap-4 lg:p-4 justify-start w-full">
         {/* Distribuição - Bar Chart para "Não" */}
 
         {listaNao.length > 0 && (
-          <div className="bg-neutral-700 p-4 rounded-lg shadow-lg ">
-            <h3 className="text-2xl border-2 inline p-2 rounded-lg  px-3 font-bold text-white mb-4">
+          <div className="bg-neutral-700 p-2 lg:p-4 rounded-lg shadow-lg ">
+            <h3 className="text-lg lg:text-2xl border-2 inline py-1 rounded-lg  px-2 font-bold text-white mb-3">
               Não
             </h3>
 
@@ -51,7 +51,7 @@ const EduCharts: React.FC<EduEscolasEstadoProps> = ({ data, topic }) => {
                 data={listaNao}
                 layout="horizontal"
                 barCategoryGap={5}
-                margin={{ top: 5, right: 10, left: 100, bottom: 5 }}
+                margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#444" />
                 <XAxis
@@ -87,8 +87,8 @@ const EduCharts: React.FC<EduEscolasEstadoProps> = ({ data, topic }) => {
         {/* Distribuição - Bar Chart para "Sim" */}
 
         {listaSim.length > 0 && (
-          <div className="bg-neutral-700 p-4 rounded-lg shadow-lg ">
-            <h3 className="text-2xl border-2 inline p-2 rounded-lg  px-3 font-bold text-white mb-4">
+          <div className="bg-neutral-700 p-2 lg:p-4 rounded-lg shadow-lg ">
+            <h3 className="text-lg lg:text-2xl border-2 inline py-1 rounded-lg  px-2 font-bold text-white mb-3">
               Sim
             </h3>
 
@@ -97,7 +97,7 @@ const EduCharts: React.FC<EduEscolasEstadoProps> = ({ data, topic }) => {
                 data={listaSim}
                 layout="horizontal"
                 barCategoryGap={5}
-                margin={{ top: 5, right: 10, left: 100, bottom: 5 }}
+                margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#444" />
                 <XAxis

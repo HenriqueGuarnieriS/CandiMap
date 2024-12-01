@@ -7,6 +7,7 @@ import { fetchEduEscolas } from "../../services/edu";
 import EduCharts from "./components/EduCharts";
 import { Suspense, useState } from "react";
 import SearchInput from "../../components/SearchInput";
+import Description from "../../components/Description";
 
 const Educacao = () => {
   const [filteredStates, setFilteredStates] = useState<EduEscolasEstado[]>();
@@ -58,24 +59,25 @@ const Educacao = () => {
 
   if (isError) return <ErrorComponent />;
 
+  const description = () => (
+    <div>
+      O Censo Escolar é o principal levantamento de dados
+      estatístico-educacionais do Brasil, realizado anualmente e coordenado pelo
+      Inep. Ele conta com a colaboração das secretarias estaduais e municipais
+      de Educação, além da participação de escolas públicas e privadas de todo o
+      país. Nesta página, as informações estão organizadas por estado, e no
+      momento estão disponíveis 3 categorias principais: <b>Água</b>,{" "}
+      <b>Estrutura</b> e <b>Energia</b>. Explore os dados para conhecer mais
+      sobre a infraestrutura educacional no Brasil
+    </div>
+  );
+
   return (
-    <div className="flex flex-col gap-4 w-full px-10 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
+    <div className="flex flex-col gap-4 w-full px-4 lg:px-10 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
       <h1 className="text-center font-extrabold text-4xl py-4 bg-neutral-700 rounded-lg">
         Dados Educação INEP
       </h1>
-      <div className="flex flex-col py-4 bg-neutral-700 rounded-lg px-5 gap-2">
-        <span className=" font-bold text-2xl"> Sobre os Dados Exibidos</span>
-        <p className="font-lg max-w-[800px] ">
-          O Censo Escolar é o principal levantamento de dados
-          estatístico-educacionais do Brasil, realizado anualmente e coordenado
-          pelo Inep. Ele conta com a colaboração das secretarias estaduais e
-          municipais de Educação, além da participação de escolas públicas e
-          privadas de todo o país. Nesta página, as informações estão
-          organizadas por estado, e no momento estão disponíveis 3 categorias
-          principais: <b>Água</b>, <b>Estrutura</b> e <b>Energia</b>. Explore os
-          dados para conhecer mais sobre a infraestrutura educacional no Brasil.
-        </p>
-      </div>
+      <Description description={description()} />
       <div className="sticky -top-6 z-10 bg-neutral-800 py-2">
         <Suspense fallback={<div>Loading search...</div>}>
           <SearchInput
@@ -120,11 +122,11 @@ const Educacao = () => {
         ))}
       </div>
 
-      <div className="shadow rounded-lg flex flex-col bg-neutral-700 p-4 ">
+      <div className="shadow rounded-lg flex flex-col bg-neutral-700 p-2 lg:p-4 ">
         <div className="flex flex-col gap-4 overflow-x-auto  scrollbar scrollbar-thumb-neutral-700 scrollbar-track-neutral-900 scroll-smooth ">
           {selectedState && selectedCat === "Estrutura" && (
-            <div className="flex flex-col bg-neutral-800 p-4">
-              <h3 className=" text-3xl font-bold">
+            <div className="flex flex-col bg-neutral-800 p-2 lg:p-4">
+              <h3 className=" text-xl lg:text-3xl font-bold">
                 Dados relacionados a estrutura
               </h3>
 
@@ -154,7 +156,9 @@ const Educacao = () => {
           )}
           {selectedState && selectedCat === "Água" && (
             <div className="flex flex-col bg-neutral-800 p-4">
-              <h3 className=" text-3xl font-bold">Dados relacionados a água</h3>
+              <h3 className=" text-xl lg:text-3xl font-bold">
+                Dados relacionados a água
+              </h3>
 
               <EduCharts
                 data={selectedState.agua_potavel}
@@ -168,7 +172,7 @@ const Educacao = () => {
           )}
           {selectedState && selectedCat === "Energia" && (
             <div className="flex flex-col bg-neutral-800 p-4">
-              <h3 className=" text-3xl font-bold">
+              <h3 className=" text-xl lg:text-3xl font-bold">
                 Dados relacionados a energia
               </h3>
 

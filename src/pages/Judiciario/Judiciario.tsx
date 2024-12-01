@@ -50,7 +50,7 @@ const Judiciario = () => {
               </h3>
               <div className="p-2 flex flex-col  gap-2 ">
                 <span className=" italic text-missaoCores-missaoYellow">
-                  * Mês de refêrencia 10/2024
+                  * Mês de referência 10/2024
                 </span>
                 {tribunal.map((person: any) => (
                   <div className=" flex justify-between items-center shadow-lg px-4 py-2 bg-neutral-900 rounded-lg">
