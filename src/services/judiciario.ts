@@ -5,16 +5,16 @@ export const fetchFolhasTribunais = async (): Promise<any> => {
     import.meta.env.VITE_FASTAPI_BACKEND_URL || "http://localhost:8000";
 
   try {
-    const tjmg = await axios.get(`${apiUrl}/payroll/tjmg/11/2024`, {
+    const tjmg = await axios.get(`${apiUrl}judi/payroll/tjmg/11/2024`, {
       withCredentials: true, // Para enviar cookies
     });
-    const tjma = await axios.get(`${apiUrl}/payroll/tjma/11/2024`, {
+    const tjma = await axios.get(`${apiUrl}judi/payroll/tjma/11/2024`, {
       withCredentials: true, // Para enviar cookies
     });
-    const tjpr = await axios.get(`${apiUrl}/payroll/tjpr/11/2024`, {
+    const tjpr = await axios.get(`${apiUrl}judi/payroll/tjpr/11/2024`, {
       withCredentials: true, // Para enviar cookies
     });
-    const tjrs = await axios.get(`${apiUrl}/payroll/tjrs/11/2024`, {
+    const tjrs = await axios.get(`${apiUrl}judi/payroll/tjrs/11/2024`, {
       withCredentials: true, // Para enviar cookies
     });
     return [tjrs.data, tjmg.data, tjma.data, tjpr.data];
