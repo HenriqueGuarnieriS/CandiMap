@@ -18,13 +18,13 @@ const EcoCharts: React.FC<EduEscolasEstadoProps> = ({ data }) => {
   // Utilizar os dados diretamente sem transformação
   const minValue = Math.min(...data.map((item) => item.Value));
   return (
-    <div className="flex flex-col bg-neutral-800 p-2">
+    <div className="flex flex-col bg-neutral-800 ">
       <h4 className="text-2xl font-semibold">
         Produtividade por hora efetivamente trabalhada (em R$ de 2021) -
         Acumulado em 4 trimestres. Sem Ajuste Sazonal
       </h4>
-      <div className="grid-cols-1 grid gap-4 p-4 justify-start w-full">
-        <div className="bg-neutral-700 p-4 rounded-lg shadow-lg">
+      <div className="grid-cols-1 grid gap-4  p-2 md:p-4 justify-start w-full">
+        <div className="bg-neutral-700  p-2 md:p-4 rounded-lg shadow-lg">
           <ResponsiveContainer width="100%" height={370}>
             <LineChart
               data={data}

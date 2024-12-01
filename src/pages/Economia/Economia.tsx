@@ -25,7 +25,7 @@ const Economia = () => {
   if (isError) return <ErrorComponent />;
 
   return (
-    <div className="flex flex-col gap-4  w-full px-10 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
+    <div className="flex flex-col gap-4  w-full px-2  md:px-10 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
       <h1 className="text-center font-extrabold text-4xl py-4 bg-neutral-700 rounded-lg">
         Dados Economia
       </h1>
@@ -59,7 +59,7 @@ const Economia = () => {
 
           <EcoChart data={ecoData} />
         </div>
-        <div className="flex flex-col bg-neutral-800 p-4">
+        <div className="flex flex-col bg-neutral-800 p-2 md:p-4">
           <h3 className=" text-3xl font-bold">
             Indicadores economicos
             <span className="ml-2 text-lg font-normal text-neutral-300">
