@@ -4,6 +4,7 @@ export const fetchFolhasTribunais = async (): Promise<any> => {
   const apiUrl =
     import.meta.env.VITE_FASTAPI_BACKEND_URL || "http://localhost:8000";
 
+  console.log("API URL configurada:", apiUrl);
   try {
     const tjmg = await axios.get(`${apiUrl}judi/payroll/tjmg/11/2024`, {
       withCredentials: true, // Para enviar cookies
