@@ -54,15 +54,15 @@ const EcoIndChart: React.FC<EduEscolasEstadoProps> = ({ data }) => {
   console.log(chartData);
   return (
     <div className="flex flex-col bg-neutral-800 p-2">
-      <h4 className="text-2xl font-semibold">
+      <h4 className=" text-sm lg:text-2xl font-semibold mb-3">
         Indicadores de Variação Mensal - Brasil
       </h4>
-      <div className="grid-cols-1 grid gap-4 p-4 justify-start w-full">
-        <div className="bg-neutral-700 p-4 rounded-lg shadow-lg">
+      <div className="grid-cols-1 grid gap-4   lg:p-4 justify-start w-full">
+        <div className="bg-neutral-700  p-1 lg:p-4 rounded-lg shadow-lg">
           <ResponsiveContainer width="100%" height={370}>
             <LineChart
               data={chartData}
-              margin={{ top: 5, right: 10, left: 20, bottom: 5 }}
+              margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#444" />
               <XAxis

@@ -8,6 +8,7 @@ import EduCharts from "./components/EduCharts";
 import { Suspense, useState } from "react";
 import SearchInput from "../../components/SearchInput";
 import Description from "../../components/Description";
+import HeaderPage from "../../components/HeaderPage";
 
 const Educacao = () => {
   const [filteredStates, setFilteredStates] = useState<EduEscolasEstado[]>();
@@ -74,9 +75,7 @@ const Educacao = () => {
 
   return (
     <div className="flex flex-col gap-4 w-full px-4 lg:px-10 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
-      <h1 className="text-center font-extrabold text-4xl py-4 bg-neutral-700 rounded-lg">
-        Dados Educação INEP
-      </h1>
+      <HeaderPage title="Dados Educação INEP" />
       <Description description={description()} />
       <div className="sticky -top-6 z-10 bg-neutral-800 py-2">
         <Suspense fallback={<div>Loading search...</div>}>
@@ -155,7 +154,7 @@ const Educacao = () => {
             </div>
           )}
           {selectedState && selectedCat === "Água" && (
-            <div className="flex flex-col bg-neutral-800 p-4">
+            <div className="flex flex-col bg-neutral-800 p-2 lg:p-4">
               <h3 className=" text-xl lg:text-3xl font-bold">
                 Dados relacionados a água
               </h3>
@@ -171,7 +170,7 @@ const Educacao = () => {
             </div>
           )}
           {selectedState && selectedCat === "Energia" && (
-            <div className="flex flex-col bg-neutral-800 p-4">
+            <div className="flex flex-col bg-neutral-800 p-2 lg:p-4">
               <h3 className=" text-xl lg:text-3xl font-bold">
                 Dados relacionados a energia
               </h3>

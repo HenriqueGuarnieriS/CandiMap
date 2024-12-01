@@ -36,7 +36,7 @@ const EduCharts: React.FC<EduEscolasEstadoProps> = ({ data, topic }) => {
 
   return (
     <div className=" flex flex-col bg-neutral-800 p-2 ">
-      <h4 className=" text-2xl font-semibold mb-4 ">{topic}</h4>
+      <h4 className="text-lg lg:text-2xl font-semibold mb-4 ">{topic}</h4>
       <div className="grid-cols-1 lg:grid-cols-2 grid gap-4 lg:p-4 justify-start w-full">
         {/* Distribuição - Bar Chart para "Não" */}
 

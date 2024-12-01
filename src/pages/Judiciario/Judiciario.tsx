@@ -3,6 +3,8 @@ import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import ErrorComponent from "../../components/ErrorComponent";
 import { spinner } from "../../mockdata/spinner";
+import Description from "../../components/Description";
+import HeaderPage from "../../components/HeaderPage";
 
 const Judiciario = () => {
   const { data, isLoading, isError }: UseQueryResult<any, Error> = useQuery({
@@ -23,24 +25,24 @@ const Judiciario = () => {
     }).format(value);
   };
   if (isError) return <ErrorComponent />;
+
+  const description = () => (
+    <div>
+      Nesta página, você encontra os 10 maiores valores pagos na folha de
+      pagamento de cada tribunal listado: <b>TJRS</b>, <b>TJPR</b>,<b>TJMA</b> e{" "}
+      <b>TJMG</b>. Os valores apresentados correspondem ao total recebido, que
+      incluem as verbas eventuais, conforme informações fornecidas diretamente
+      pelos próprios tribunais, em cumprimento à Resolução nº 102/2009 do CNJ.
+      Os dados são organizados mensalmente e, no momento, estão disponíveis
+      apenas as informações referentes ao mês <b>10/2024</b>.
+    </div>
+  );
+
   return (
     <div className="flex flex-col gap-4 w-full px-4 py-6 bg-neutral-800 max-h-screen text-white overflow-auto">
-      <h1 className="text-start font-extrabold text-4xl py-4 bg-neutral-700 rounded-lg px-2">
-        Dados Tribunais
-      </h1>
-      <div className="flex flex-col py-4 bg-neutral-700 rounded-lg px-5 gap-2">
-        <span className=" font-bold text-2xl"> Sobre os Dados Exibidos</span>
-        <p className="font-lg max-w-[800px] ">
-          Nesta página, você encontra os 10 maiores valores pagos na folha de
-          pagamento de cada tribunal listado: <b>TJRS</b>, <b>TJPR</b>,
-          <b>TJMA</b> e <b>TJMG</b>. Os valores apresentados correspondem ao
-          total recebido, que incluem as verbas eventuais, conforme informações
-          fornecidas diretamente pelos próprios tribunais, em cumprimento à
-          Resolução nº 102/2009 do CNJ. Os dados são organizados mensalmente e,
-          no momento, estão disponíveis apenas as informações referentes ao mês{" "}
-          <b>10/2024</b>.
-        </p>
-      </div>
+      <HeaderPage title="Dados Tribunais" />
+      <Description description={description()} />
+
       <div className="grid lg:grid-cols-2 gap-4">
         {data &&
           data.map((tribunal: any) => (
