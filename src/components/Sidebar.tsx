@@ -21,7 +21,10 @@ const renderMobileItems = (
             onClick={handleOpenSidebar}
             className="cursor-pointer font-semibold  bg-neutral-800  text-missaoCores-missaoYellow  p-2 shadow rounded-md w-full flex flex-col items-center"
           >
-            <Link className="z-50 flex  items-center gap-2" to="/">
+            <Link
+              className="z-50 flex w-full justify-center   items-center gap-2"
+              to="/"
+            >
               <MdSpaceDashboard className="text-3xl" />
               Painel
             </Link>
@@ -30,7 +33,10 @@ const renderMobileItems = (
             onClick={handleOpenSidebar}
             className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center"
           >
-            <Link className="z-50 flex   items-center gap-2" to="/partidos">
+            <Link
+              className="z-50 flex w-full justify-center    items-center gap-2"
+              to="/partidos"
+            >
               <RiGovernmentFill className="text-3xl" />
               Partidos
             </Link>
@@ -39,7 +45,10 @@ const renderMobileItems = (
             onClick={handleOpenSidebar}
             className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center"
           >
-            <Link className="z-50 flex  items-center gap-2" to="/folha">
+            <Link
+              className="z-50 flex w-full justify-center   items-center gap-2"
+              to="/folha"
+            >
               <GoLaw className="text-3xl" />
               Judiciário
             </Link>
@@ -48,7 +57,10 @@ const renderMobileItems = (
             onClick={handleOpenSidebar}
             className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center"
           >
-            <Link className="z-50 flex   items-center gap-2" to="/educacao">
+            <Link
+              className="z-50 flex w-full justify-center    items-center gap-2"
+              to="/educacao"
+            >
               <GiWhiteBook className="text-3xl" />
               Educação
             </Link>
@@ -57,7 +69,10 @@ const renderMobileItems = (
             onClick={handleOpenSidebar}
             className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center"
           >
-            <Link className="z-50 flex items-center gap-2" to="/economia">
+            <Link
+              className="z-50 flex w-full justify-center  items-center gap-2"
+              to="/economia"
+            >
               <GiMoneyStack className="text-3xl" />
               Economia
             </Link>
@@ -73,31 +88,46 @@ const renderDesktopItems = () => {
       <nav className=" w-full   ">
         <ul className=" text-sm flex flex-col gap-2 justify-center items-center text-center">
           <li className="cursor-pointer font-semibold  bg-neutral-800  text-missaoCores-missaoYellow  p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex  items-center gap-2" to="/">
+            <Link
+              className="z-50 flex  w-full justify-center items-center gap-2"
+              to="/"
+            >
               <MdSpaceDashboard className="text-3xl" />
               Painel
             </Link>
           </li>
           <li className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex   items-center gap-2" to="/partidos">
+            <Link
+              className="z-50 flex   w-full justify-center   items-center gap-2"
+              to="/partidos"
+            >
               <RiGovernmentFill className="text-3xl" />
               Partidos
             </Link>
           </li>
           <li className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex  items-center gap-2" to="/folha">
+            <Link
+              className="z-50 flex   w-full justify-center  items-center gap-2"
+              to="/folha"
+            >
               <GoLaw className="text-3xl" />
               Judiciário
             </Link>
           </li>
           <li className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex   items-center gap-2" to="/educacao">
+            <Link
+              className="z-50 flex  w-full justify-center    items-center gap-2"
+              to="/educacao"
+            >
               <GiWhiteBook className="text-3xl" />
               Educação
             </Link>
           </li>
           <li className="cursor-pointer font-semibold bg-neutral-800  text-missaoCores-missaoYellow p-2 shadow rounded-md w-full flex flex-col items-center">
-            <Link className="z-50 flex items-center gap-2" to="/economia">
+            <Link
+              className="z-50 flex  w-full justify-center   items-center gap-2"
+              to="/economia"
+            >
               <GiMoneyStack className="text-3xl" />
               Economia
             </Link>
